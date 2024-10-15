@@ -1,9 +1,12 @@
 package com.YITJavaExperimentProjects.service;
 
 import com.YITJavaExperimentProjects.dao.UserMapper;
+import com.YITJavaExperimentProjects.model.Post;
 import com.YITJavaExperimentProjects.model.User;
 import com.YITJavaExperimentProjects.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.List;
 
 public class UserService {
 
@@ -25,10 +28,10 @@ public class UserService {
             User user1 = userMapper.selectUserByEmail(user.getEmail());
             User user2 = userMapper.selectUserByUsername(user.getUserName());
             //插入用户
-            if (user1 != null) {
+            if (user1 == null) {
                 System.out.println("error:邮箱被占用");
                 return false;
-            } else if (user2 != null) {
+            } else if (user2 == null) {
                 System.out.println("error:用户名被占用");
                 return false;
             } else {
@@ -67,6 +70,14 @@ public class UserService {
 
             //一定时登陆成功后的不用校验直接查询
             return userMapper.selectUserByUsername(name);
+        }
+    }
+
+    //getPostByUserId()
+    public List<Post> getPostByUserId(int userId) {
+        try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            return userMapper.getPostByUserId(userId);
         }
     }
 }

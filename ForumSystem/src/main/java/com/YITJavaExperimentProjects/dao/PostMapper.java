@@ -20,4 +20,8 @@ public interface PostMapper {
     //- `selectPostsByUserId()`: 根据用户ID查询用户的所有帖子。
     @Select("select * from Post where userId = #{userId}")
     List<Post> selectPostsByUserId(int userId);
+
+    //查询所有帖子
+    @Select("select * from Post")
+    List<Post> getAllPosts();
 }

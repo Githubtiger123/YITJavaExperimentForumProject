@@ -1,8 +1,11 @@
 package com.YITJavaExperimentProjects.dao;
 
+import com.YITJavaExperimentProjects.model.Post;
 import com.YITJavaExperimentProjects.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 public interface UserMapper {
 
@@ -26,5 +29,9 @@ public interface UserMapper {
 
     //删除用户
     int deleteUserById(int uid);
+
+    //查询用户发的帖子
+    @Select("select * from Post where userId = #{uid}")
+    List<Post> getPostByUserId(int uid);
 
 }

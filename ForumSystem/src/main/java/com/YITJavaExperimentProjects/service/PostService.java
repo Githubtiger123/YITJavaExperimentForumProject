@@ -36,10 +36,17 @@ public class PostService {
     }
 
     //- `getPostsByUserId()`: 根据用户ID获取用户的所有帖子。
-    public List<Post> getAllPost(int userId) {
+    public List<Post> getPostsByUserId(int userId) {
         try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
             PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
             return postMapper.selectPostsByUserId(userId);
+        }
+    }
+
+    public List<Post> getAllPosts() {
+        try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
+            PostMapper postMapper = sqlSession.getMapper(PostMapper.class);
+            return postMapper.getAllPosts();
         }
     }
 
