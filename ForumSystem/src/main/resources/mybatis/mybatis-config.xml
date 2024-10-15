@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="run">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://113.121.252.214:22:3306/ForumDB"/>
+                <property name="username" value="tiger"/>
+                <property name="password" value="********"/>
+            </dataSource>
+        </environment>
+
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/ForumDB"/>
+                <property name="username" value="root"/>
+                <property name="password" value="******"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    注册mapper-->
+    <mappers>
+        <package name="com.YITJavaExperimentProjects.dao"/>
+    </mappers>
+</configuration>
