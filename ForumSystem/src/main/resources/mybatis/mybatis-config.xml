@@ -3,29 +3,32 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!-- 引用外部配置文件 -->
+    <properties resource="mybatis/config.properties"/>
+
     <environments default="development">
         <environment id="run">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://113.121.252.214:22:3306/ForumDB"/>
-                <property name="username" value="tiger"/>
-                <property name="password" value="********"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url.run}"/>
+                <property name="username" value="${jdbc.username.run}"/>
+                <property name="password" value="${jdbc.password.run}"/>
             </dataSource>
         </environment>
 
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/ForumDB"/>
-                <property name="username" value="root"/>
-                <property name="password" value="******"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url.development}"/>
+                <property name="username" value="${jdbc.username.development}"/>
+                <property name="password" value="${jdbc.password.development}"/>
             </dataSource>
         </environment>
     </environments>
 
-<!--    注册mapper-->
+    <!-- 注册mapper -->
     <mappers>
         <package name="com.YITJavaExperimentProjects.dao"/>
     </mappers>
