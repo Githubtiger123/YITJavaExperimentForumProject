@@ -75,7 +75,6 @@ public class ForumSystemRegisterAndSignPage {
         while (running) {
             displayMainPage();
             int choice = scanner.nextInt();
-            scanner.nextLine(); // 消耗换行符
 
             switch (choice) {
                 case 1:

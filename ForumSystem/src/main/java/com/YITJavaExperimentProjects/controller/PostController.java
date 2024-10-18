@@ -14,4 +14,9 @@ public class PostController {
 
         return postService.getAllPosts();
     }
+
+    //根据帖子ID获取帖子信息。
+    public Post getPostById(int id) {
+        return postService.getPostById(id);
+    }
 }
