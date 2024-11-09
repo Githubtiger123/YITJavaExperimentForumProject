@@ -38,9 +38,7 @@ public class ForumSystemTopicsPage {
 
     private void displayTopicsPage() {
         System.out.println("------------话题页面----------------");
-        for (int i = 0; i < TOPICS.length; i++) {
-            System.out.println((i + 1) + ". " + TOPICS[i]);
-        }
+        postController.getAllPosts();
         System.out.println("(1) 选择话题");
         System.out.println("(2) 退出");
         System.out.println("-------------------------------------");
